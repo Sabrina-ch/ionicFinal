@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/productos">
+
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Agregar usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding-top>
+<ion-item>
+  <ion-label position="floating">Nombre de usuario</ion-label>
+  <ion-input [(ngModel)]="usuario.nombre" name="nombreNuevo"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Mail</ion-label>
+  <ion-input [(ngModel)]="usuario.mail" name="mailNuevo"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label position="floating">Passsword</ion-label>
+  <ion-input [(ngModel)]="usuario.clave" name="claveNueva"></ion-input>
+</ion-item>
+
+<!--<ion-item>
+  <ion-label >Imagen </ion-label>
+  <ion-input type="file" [(ngModel)]="usuario.iamgen_usuario" name="imagen_usuario"></ion-input>
+</ion-item>--->
+
+<ion-button color="medium" expand="block" (click)="agregarUsuario()">Agregar</ion-button>
+</ion-content>

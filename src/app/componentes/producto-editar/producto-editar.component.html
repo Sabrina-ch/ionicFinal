@@ -1,0 +1,34 @@
+<ion-header>
+    <ion-toolbar color="primary" >
+
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/productos">
+          </ion-back-button>
+      </ion-buttons>
+
+        <ion-title >Editar Usuario</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+      <ion-item>
+    <ion-label position="stacked">Nombre de usuario</ion-label>
+    <ion-input  [(ngModel)]="nombre" name="nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">mail</ion-label>
+    <ion-input  [(ngModel)]="mail"  name="mail" ></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Id</ion-label>
+    <ion-input [(ngModel)]="id"  name="id"></ion-input>
+  </ion-item>
+
+  <ion-button color ="success" expand="block" type="submit" (click)="editarUsuario()" >
+    Guardar cambios
+  </ion-button>
+
+</ion-content>
+
