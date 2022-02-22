@@ -1,40 +1,45 @@
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-     Lista
+      Lista
     </ion-title>
-    <ion-button size="small" slot="end" color="light" routerLink="/productos-bm"><ion-icon name="person-add-outline"></ion-icon></ion-button>
-    <ion-button size="small" slot="end" color="light"  (click)="salir()"><ion-icon name="log-in-outline"></ion-icon></ion-button>
+    <ion-button size="small" slot="end" color="light" routerLink="/productos-bm">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-button>
+    <ion-button size="small" slot="end" color="light" (click)="salir()">
+      <ion-icon name="log-in-outline"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-item>
-    <ion-label position="floating" >Buscar <ion-icon name="search-outline"></ion-icon></ion-label>
+    <ion-label position="floating">Buscar <ion-icon name="search-outline"></ion-icon>
+    </ion-label>
     <ion-input [(ngModel)]="buscar"></ion-input>
   </ion-item>
 
 
 
-  <ion-list> 
-    <ion-item *ngFor ="let item of usuarios | transformacion: buscar">
-      <ion-avatar slot="start"> 
-        <img src="assets/sabri_avatar.PNG"> 
-        </ion-avatar>
-        <ion-label>
-          <p appHighlight>{{item.nombre}}</p>
+  <ion-list>
+    <ion-item *ngFor="let item of usuarios | transformacion: buscar">
+      <ion-avatar slot="start">
+        <img src="assets/sabri_avatar.PNG">
+      </ion-avatar>
+      <ion-label>
+        <p appHighlight>{{item.nombre}}</p>
         <p appHighlight>{{item.mail}}</p>
-      <p appHighlight>{{item.id}}</p>
-    </ion-label> 
-       <ion-button color="success" name="editar" value="editar" [routerLink]= "['/producto-editar',item.nombre,item.mail,item.id]"><ion-icon name="pencil-outline"></ion-icon></ion-button> 
-       <ion-button color="danger"  value="eliminar" (click)="alerta(item.id)" name="usuario" [id]="item.nombre" ><ion-icon name="person-remove-outline"></ion-icon></ion-button> 
+        <p appHighlight>{{item.id}}</p>
+      </ion-label>
+      <ion-button color="success" name="editar" value="editar"
+        [routerLink]="['/producto-editar',item.nombre,item.mail,item.id]">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+      <ion-button color="danger" value="eliminar" (click)="alerta(item.id)" name="usuario" [id]="item.nombre">
+        <ion-icon name="person-remove-outline"></ion-icon>
+      </ion-button>
     </ion-item>
-  </ion-list>  
+  </ion-list>
 
-  
+
 </ion-content>
-
-
-
-  

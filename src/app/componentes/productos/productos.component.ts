@@ -10,16 +10,16 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./productos.component.scss'],
 })
 export class ProductosComponent implements OnInit {
-  usuarios!:Array<Usuario>;
-  dato!:string;
-   usuario = new Usuario;
-   buscar! :string;
+  usuarios!: Array<Usuario>;
+  dato!: string;
+  usuario = new Usuario;
+  buscar!: string;
 
-  constructor(private router: Router,private servicio:ProductoServicioService, public alert:AlertController) { 
-    this.servicio.traerUsuarios().subscribe(resultado=> {this.usuarios =<Array<Usuario>> resultado });
+  constructor(private router: Router, private servicio: ProductoServicioService, public alert: AlertController) {
+    this.servicio.traerUsuarios().subscribe(resultado => { this.usuarios = <Array<Usuario>>resultado });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   /*eliminar(value: any){
     this.dato = value;
@@ -35,49 +35,51 @@ export class ProductosComponent implements OnInit {
         });
          }*/
 
-         async alerta(value:any){
-           let alerta= await this.alert.create({
-            header: 'Advertencia',
-            message: '¿realmente desea eliminar este usuario?',
-            buttons: [{
-              text: 'si',
-              role: 'si',
-              id: 'cancel-button',
-              handler: () => {
-                this.dato = value;
-                const id = {id: this.dato}
-                     console.log(id);
-                      this.servicio.eliminarUsuario(id).subscribe( data => {
-                      let datos = Object.values(data);
-                      if(datos[0] == true){
-                         window.location.reload();
-                         }else{
-                            console.log("false")
-         }
-        });
-                
-              }
-    
-           },{text: 'no',
-           role: 'no',
-          handler:() => 
-        console.log('usuario no eliminado')}],
-           });
+  async alerta(value: any) {
+    let alerta = await this.alert.create({
+      header: 'Advertencia',
+      message: '¿realmente desea eliminar este usuario?',
+      buttons: [{
+        text: 'si',
+        role: 'si',
+        id: 'cancel-button',
+        handler: () => {
+          this.dato = value;
+          const id = { id: this.dato }
+          console.log(id);
+          this.servicio.eliminarUsuario(id).subscribe(data => {
+            let datos = Object.values(data);
+            if (datos[0] == true) {
+              window.location.reload();
+            } else {
+              console.log("false")
+            }
+          });
 
-           await alerta.present();
-
-         
-         }
-
-         salir(){
-          sessionStorage.removeItem("usuario");
-          this.router.navigate(["/home"]);
-          console.log('sesión finalizada');
-       
-      
         }
 
-         
+      }, {
+        text: 'no',
+        role: 'no',
+        handler: () =>
+          console.log('usuario no eliminado')
+      }],
+    });
+
+    await alerta.present();
+
+
+  }
+
+  salir() {
+    sessionStorage.removeItem("usuario");
+    this.router.navigate(["/home"]);
+    console.log('sesión finalizada');
+
+
+  }
+
+
 
 
 }

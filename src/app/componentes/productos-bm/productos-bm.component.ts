@@ -11,39 +11,39 @@ import { LoadingController } from '@ionic/angular';
 })
 export class ProductosBmComponent implements OnInit {
 
-  usuario= new Usuario;
+  usuario = new Usuario;
 
-  constructor(private ruteo: Router, private servicio:ProductoServicioService,private loading:LoadingController) { }
+  constructor(private ruteo: Router, private servicio: ProductoServicioService, private loading: LoadingController) { }
 
-  
-  agregarUsuario(){
+
+  agregarUsuario() {
     this.loadGuardar();
-    const usu={nombre:this.usuario.nombre,mail:this.usuario.mail,clave:this.usuario.clave};
-     
-     this.servicio.enviarDatosNuevos(usu).subscribe( data => {
+    const usu = { nombre: this.usuario.nombre, mail: this.usuario.mail, clave: this.usuario.clave };
+
+    this.servicio.enviarDatosNuevos(usu).subscribe(data => {
       if (sessionStorage.getItem("usuario") != null) {
         this.ruteo.navigate(["/productos"]);
         console.log('agregado')
-     }
+      }
 
-      
+
     });
-    }
+  }
 
-    async loadGuardar() {
-      const loading = await this.loading.create({
-        cssClass: 'my-custom-class',
-        message: 'guardando cambios...',
-        duration: 2000
-      });
-      await loading.present();
-  
-      const { role, data } = await loading.onDidDismiss();
-      console.log('cambios guardados');
-    }
-  
-    
+  async loadGuardar() {
+    const loading = await this.loading.create({
+      cssClass: 'my-custom-class',
+      message: 'guardando cambios...',
+      duration: 2000
+    });
+    await loading.present();
 
-  ngOnInit() {}
+    const { role, data } = await loading.onDidDismiss();
+    console.log('cambios guardados');
+  }
+
+
+
+  ngOnInit() { }
 
 }

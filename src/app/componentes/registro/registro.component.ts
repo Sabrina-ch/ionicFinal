@@ -13,28 +13,28 @@ import { ProductoServicioService } from 'src/app/helpers/producto-servicio.servi
 export class RegistroComponent implements OnInit {
 
   usuario = new Usuario;
-   mensaje!:string;
+  mensaje!: string;
 
-  constructor(private ruta: Router,private servicioApi:ProductoServicioService,public loading:LoadingController) { }
+  constructor(private ruta: Router, private servicioApi: ProductoServicioService, public loading: LoadingController) { }
 
-  registro(){
-      
-    const usu={nombre:this.usuario.nombre,mail:this.usuario.mail,clave:this.usuario.clave};
+  registro() {
+
+    const usu = { nombre: this.usuario.nombre, mail: this.usuario.mail, clave: this.usuario.clave };
     this.loadGuardar();
-    this.servicioApi.enviarDatosNuevos(usu).subscribe( data => {
-     if(data['success']==true){
-       this.ruta.navigateByUrl("/login");
+    this.servicioApi.enviarDatosNuevos(usu).subscribe(data => {
+      if (data['success'] == true) {
+        this.ruta.navigateByUrl("/login");
+      }
+      else {
+        data['message'];
+      }
+
     }
-     else{
-       data['message'];
-     }
-     
-   }
-   );
+    );
 
-   }
+  }
 
-   async loadGuardar() {
+  async loadGuardar() {
     const loading = await this.loading.create({
       cssClass: 'my-custom-class',
       message: 'guardando cambios...',
@@ -46,6 +46,6 @@ export class RegistroComponent implements OnInit {
     console.log('cambios guardados');
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

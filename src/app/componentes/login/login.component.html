@@ -1,34 +1,30 @@
-
-
-             
-            <!--<ion-header>
+<!--<ion-header>
               <ion-toolbar >
                 <ion-title>Login</ion-title>
               </ion-toolbar>
             </ion-header>-->
-            
-                     
-            <ion-content >
-              <ion-img class="img" src="assets/icono_login.png"></ion-img>
-              <ion-item >
-                <ion-label position="floating">Nombre de usuario</ion-label>
-                <ion-input  type="text" [(ngModel)]="usuario.nombre"  required></ion-input>
-                
-              </ion-item>
-            
-              <ion-item >
-                <ion-label position="floating">Password</ion-label>
-                <ion-input  type="Password" [(ngModel)]="usuario.clave"   required></ion-input>
-              </ion-item>
-            
-              <ion-button color ="primary" expand="block" type="submit" (click)="login()" >
-                INGRESAR
-              </ion-button>
-            
-              <ion-item class="ion-text-center">
-                <ion-label></ion-label>
-              </ion-item>
-            
-              <ion-button color="primary" expand="block"  routerLink="/registro">CREAR CUENTA</ion-button>
-            </ion-content>
-            
+
+
+<ion-content>
+  <ion-img class="img" src="assets/icono_login.png"></ion-img>
+  <ion-item>
+    <ion-label position="floating">Nombre de usuario</ion-label>
+    <ion-input type="text" [(ngModel)]="usuario.nombre" required></ion-input>
+
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="Password" [(ngModel)]="usuario.clave" required></ion-input>
+  </ion-item>
+
+  <ion-button color="primary" expand="block" type="submit" (click)="login()">
+    INGRESAR
+  </ion-button>
+
+  <ion-item class="ion-text-center">
+    <ion-label></ion-label>
+  </ion-item>
+
+  <ion-button color="primary" expand="block" routerLink="/registro">CREAR CUENTA</ion-button>
+</ion-content>
