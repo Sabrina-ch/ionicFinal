@@ -37,8 +37,8 @@ export class ProductosComponent implements OnInit {
 
          async alerta(value:any){
            let alerta= await this.alert.create({
-            header: 'advertencia',
-            message: 'realmente desea eliminar este usuario?',
+            header: 'Advertencia',
+            message: '¿realmente desea eliminar este usuario?',
             buttons: [{
               text: 'si',
               role: 'si',
@@ -70,8 +70,8 @@ export class ProductosComponent implements OnInit {
          }
 
          salir(){
-          localStorage.removeItem("usuario");
-          this.router.navigate(["/login"]);
+          sessionStorage.removeItem("usuario");
+          this.router.navigate(["/home"]);
           console.log('sesión finalizada');
        
       

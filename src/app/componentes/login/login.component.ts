@@ -6,12 +6,18 @@ import { LoadingController,AlertController } from '@ionic/angular';
 
 
 
+
+
+
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+
+  
 
   usuario= new Usuario;
  
@@ -22,8 +28,12 @@ export class LoginComponent implements OnInit {
  
   
   constructor(private ruteo:Router,private servicio:ApiService,public loading : LoadingController,public alerta:AlertController) {
-    
+  
    }
+
+  
+
+   
 
    login(){
     
@@ -35,6 +45,7 @@ export class LoginComponent implements OnInit {
         this.alertaUsuario();
         this.ruteo.navigateByUrl('/login')
         this.respuestaLogin = data['message'];
+        
       }else{
         this.load();
         this.respuestaLogin = data['message'];
@@ -67,7 +78,12 @@ export class LoginComponent implements OnInit {
       let alert = await this.alerta.create({
         cssClass: 'my-custom-class',
         message: 'usuario no registrado',
-        buttons:['OK']
+        buttons:[{
+          text:'OK',
+         handler:()=>{
+           window.location.reload();
+         }}],
+       
       });
 
       await alert.present();
@@ -76,9 +92,15 @@ export class LoginComponent implements OnInit {
 
 
     }
+
+   
+      
+    
  
    
   ngOnInit(): void {
+
+    
   }
 
   
