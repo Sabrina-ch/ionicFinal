@@ -33,7 +33,7 @@ export class ProductoEditarComponent implements OnInit {
       if(datos[0] == true){
         
         this.ruteo.navigateByUrl("/productos");
-       
+    
       }else{
         console.log("false")
       }

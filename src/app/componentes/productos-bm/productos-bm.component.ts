@@ -20,11 +20,11 @@ export class ProductosBmComponent implements OnInit {
     this.loadGuardar();
     const usu = { nombre: this.usuario.nombre, mail: this.usuario.mail, clave: this.usuario.clave };
 
-    this.servicio.enviarDatosNuevos(usu).subscribe(data => {
-      if (sessionStorage.getItem("usuario") != null) {
-        this.ruteo.navigate(["/productos"]);
-        console.log('agregado')
-      }
+    this.servicio.enviarDatosNuevos(usu).subscribe(() => {
+      
+        this.ruteo.navigateByUrl("/productos");
+        console.log('agregado');
+      
 
 
     });
